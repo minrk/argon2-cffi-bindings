@@ -4,6 +4,7 @@ requires = [
     "setuptools_scm[toml]>=6.2",
     "wheel",
     "cffi>=1.0.1",
+    "cffi>=1.17.0rc1; python_version >= '3.13'",
 ]
 build-backend = "setuptools.build_meta"
 
@@ -41,8 +42,8 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
-    'cffi>=1.0.1 ; python_version < "3.13"',
-    'cffi>=1.17.0rc1 ; python_version >= "3.13"'
+    "cffi>=1.0.1",
+    "cffi>=1.17.0rc1; python_version >= '3.13'",
 ]
 
 [project.optional-dependencies]
