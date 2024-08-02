@@ -2,6 +2,7 @@
 
 import os
 import platform
+import sysconfig
 
 from pathlib import Path
 
@@ -48,6 +49,7 @@ if use_system_argon2:
         "_ffi",
         "#include <argon2.h>",
         libraries=["argon2"],
+        py_limited_api=not sysconfig.get_config_var("Py_GIL_DISABLED"),
     )
 else:
     lib_base = Path("extras") / "libargon2" / "src"
@@ -56,6 +58,7 @@ else:
         "#include <argon2.h>",
         extra_compile_args=["-msse2"] if (optimized and not windows) else None,
         include_dirs=[os.path.join("extras", "libargon2", "include")],
+        py_limited_api=not sysconfig.get_config_var("Py_GIL_DISABLED"),
         sources=[
             str(lib_base / path)
             for path in [
