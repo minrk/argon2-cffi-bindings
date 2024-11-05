@@ -2,7 +2,11 @@
 requires = [
     "setuptools>=45",
     "setuptools_scm[toml]>=6.2",
-    "cffi>=1.0.1",
+    # this needs to not be here
+    # for the URL below to be accepted by `pip install`
+    # "cffi>=1.0.1",
+    # use dev cffi for 3.13 while waiting for cffi 1.18
+    "cffi @ https://github.com/python-cffi/cffi/archive/HEAD.tar.gz",
 ]
 build-backend = "setuptools.build_meta"
 
